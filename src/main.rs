@@ -29,7 +29,10 @@ trait ProgressIteratorExt: Sized {
     fn progress(self) -> Progress<Self>;
 }
 
-impl<Iter> ProgressIteratorExt for Iter {
+impl<Iter> ProgressIteratorExt for Iter
+where
+    Iter: Iterator,
+{
     fn progress(self) -> Progress<Self> {
         Progress::new(self)
     }
